@@ -1,0 +1,50 @@
+name: document_tracking_system
+description: A document tracking system with QR code scanning for Admin, Faculty, and Staff roles.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+
+  # Local database
+  sqflite: ^2.3.2
+  path: ^1.9.0
+
+  # QR code generation & scanning
+  qr_flutter: ^4.1.0
+  mobile_scanner: ^4.0.1
+
+  # QR save to gallery
+  gal: ^2.3.0
+  path_provider: ^2.1.4
+  screenshot: ^3.0.0
+
+  # Utilities
+  intl: ^0.19.0
+  uuid: ^4.3.3
+  supabase_flutter: ^2.17.2
+  firebase_core: ^4.14.0
+  firebase_messaging: ^16.6.0
+  flutter_local_notifications: ^22.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: true
+  ios: false
+  image_path: "assets/icon/icon.png"
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/icon/
