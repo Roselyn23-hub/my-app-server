@@ -3,7 +3,7 @@ import 'dart:convert';
 /// What actually gets encoded into (and read back out of) a document's
 /// QR code.
 ///
-/// The QR now carries a URL, e.g. https://yourdomain.com/doc/abc123 —
+/// The QR now carries a URL, e.g. https://my-app-server-w0ms.onrender.com/doc/abc123 —
 /// not the document's title/type/route. A generic scanner (Google
 /// Camera, Samsung Camera, any random QR app) recognizes this as a
 /// link and offers to open it, instead of just dumping raw JSON text
@@ -15,9 +15,10 @@ import 'dart:convert';
 /// status/route from Supabase, since that data changes over time and
 /// the QR itself is never re-printed.
 class QrPayload {
-  // TODO: replace with your real domain once it's set up with
-  // assetlinks.json (Android) / apple-app-site-association (iOS).
-  static const String baseUrl = 'https://yourdomain.com/doc/';
+  // Your live Render backend URL.
+  // NOTE: if your Render URL ever changes (e.g. you rename the service
+  // or redeploy under a different name), update this constant.
+  static const String baseUrl = 'https://my-app-server-w0ms.onrender.com/doc/';
 
   final String id;
   final String title;
@@ -46,7 +47,7 @@ class QrPayload {
   /// Extracts just the document ID from a scanned QR string.
   ///
   /// Handles three cases, in order, so old QR codes keep working:
-  /// 1. New-style URL, e.g. https://yourdomain.com/doc/abc123 -> abc123
+  /// 1. New-style URL, e.g. https://my-app-server-w0ms.onrender.com/doc/abc123 -> abc123
   /// 2. Old-style JSON, e.g. {"id":"abc123",...} -> abc123
   /// 3. Old-style bare ID, e.g. abc123 -> abc123
   static String decodeId(String scanned) {
